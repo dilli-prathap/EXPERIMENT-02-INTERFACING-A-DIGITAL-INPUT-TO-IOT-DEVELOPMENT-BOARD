@@ -101,11 +101,43 @@ IR technology is used in a wide range of wireless applications which includes re
 
 ## STM 32 CUBE PROGRAM
 
-```
-// Your STM 32 CUBE Program code here
-```
+int main(void)
+{
+  
+  HAL_Init();
+  
+  SystemClock_Config();
+
+  MX_GPIO_Init();
+    
+  while (1)
+  {
+	  IRPAIR();
+  }
+}
+
+void IRPAIR()
+{
+	IRSENSOR = HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_4);
+	if(IRSENSOR == 0)
+	{
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
+		HAL_Delay(2000);
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+		HAL_Delay(500);
+	}
+	else
+	{
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+		HAL_Delay(2000);
+	}
+}
 
 ## OUTPUT
+OBJECT NOT DETECTED:
+![426866622-2704a7cc-1ef4-41c3-b879-b20a0b896934](https://github.com/user-attachments/assets/fcb1688d-3d0f-4e3c-82af-6535c33158cf)
+OBJECT DETECTED:
+![426867055-5b98d54d-0d3f-4dc5-b2b0-a2680b2b6d82](https://github.com/user-attachments/assets/60d97657-8417-4bc7-9e8b-a6849d65f0e8)
 
 ## Result
 
