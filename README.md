@@ -3,11 +3,11 @@
 
 **DATE:**
 
-**NAME:**
+**NAME:**Dilli prathap.D
 
-**ROLL NO:**
+**ROLL NO:**212224110016
 
-**DEPARTMENT:**
+**DEPARTMENT:**cse(IOT)
 
 ## Aim
 
@@ -100,12 +100,44 @@ IR technology is used in a wide range of wireless applications which includes re
 
 
 ## STM 32 CUBE PROGRAM
+int main(void)
+{
+  
+  HAL_Init();
+  
+  SystemClock_Config();
 
-```
-// Your STM 32 CUBE Program code here
-```
+  MX_GPIO_Init();
+    
+  while (1)
+  {
+	  IRPAIR();
+  }
+}
+
+void IRPAIR()
+{
+	IRSENSOR = HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_4);
+	if(IRSENSOR == 0)
+	{
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_SET);
+		HAL_Delay(2000);
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+		HAL_Delay(500);
+	}
+	else
+	{
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_0, GPIO_PIN_RESET);
+		HAL_Delay(2000);
+	}
+}
 
 ## OUTPUT
+OBJECT NOT DETECTED :
+![426866622-2704a7cc-1ef4-41c3-b879-b20a0b896934](https://github.com/user-attachments/assets/4396693c-8a0f-4007-a923-298dc4d5b9b1)
+
+OBJECT DETECTED :
+![426867055-5b98d54d-0d3f-4dc5-b2b0-a2680b2b6d82](https://github.com/user-attachments/assets/b5ee74c9-dcad-4738-a65f-58b9a052d2ab)
 
 ## Result
 
